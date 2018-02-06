@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>Venues</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<h1>Overview of the project</h1>
+<hr>
+<p>
+	For this project we decided to use FourSquare and it's API to build a program that users can use to find different types of venues. Users can use the program to search for venues in two different ways, a specified search using exact street address or broad search of an area. Then the user can secify how many results they want to see and then specify what types of venues they want to search for. Once they get the results the users can opt for a chart with the venues ratings and get more details of a venue of their choice from the results. 
+</p>
+
+<h1>Foursquare API </h1>
+<hr>
+
+<h2>Using Foursquare API</h2>
+<h3>About Foursquare:</h3>
+<p>
+	Foursquare is a technology company that uses location intelligence to build meaningful consumer experiences and business solutions. There are two components of Foursquare. <br>
+	<br>
+	<b>FourSquare City Guide:</b><br>
+	FourSquare City guide helps people discover new places based on recommendations from a tursted community. Users can look for recommendation based on city or sepcific type of food or even look up more information about a venue accompanied by pictures and comments posted by other users or their friends.<br>
+	<br>
+	<b>FourSquare Swarm:</b><br>
+	FourSqare Swarm keeps a lifelog of every place a user visits and makes recommendations based on your preference. Swarm lets users compete with friends and earn prizes based on the places they visit.<br>
+</p>
+
+<h3>Registering for FourSquare API:</h3>
+<p>
+	To use FourSquare's API, one has to register for FourSquare account or use your existing login information. To register for an account <a href='https://foursquare.com/'> click here.</a><br>
+	<br>
+	Once an account has been registered, you have to register for developer account. To create a developer account <a href='https://foursquare.com/developers/register'> click here.</a> After you create the account, a Client ID key and Client Secret key is created. These two keys are required to link your program with FourSquare developer.<br>
+</p>
+
+<h3>FourSquare API used and documentation:</h3>
+<p>FourSquare has a list of powerful APIs that can be integrated into a program. The full documentation of FourSquare API and how to use them can be found <a href ='https://developer.foursquare.com/docs'>here.</a> <br>
+For this project we used three APIs under Venues:<br>
+<ul>
+	<li><a href='https://developer.foursquare.com/docs/api/venues/search'>Search for a venue</a></li>
+	<li><a href='https://developer.foursquare.com/docs/api/venues/details'>Get details of a venue</a></li>
+</ul>
+</p>
+<p>
+In addition to FourSquare, for this project, we also used Google API to translate the address into co-ordinates. The Google API used is:
+<ul>
+	<li><a href='https://developers.google.com/maps/documentation/geocoding/start'>Google Location Search</a></li>
+</ul>
+</p>
+
+<h1>API Usage</h1>
+<hr>
+<h2>How did we use the APIs</h2>
+<p>
+	We have used two API's from FourSquare and one API from Google to create our program. We use URLs to connect to the APIs and get the information we need. The details on how we used the API's are:
+
+<h3> Google API:</h3>
+<p>
+	We first ask user to input's the location in our program, which could be specific such as 123 Main Street, Washington DC or broad such as New York, NY. Once we get the parameter we run the address through Google API to ge the exact coordinates. We need these coordinates to use FourSqaure API.
+</p>
+
+<h3> Search for a Venue API:</h3>
+<p>
+	To use this we needed to input the following parameters to our function and then connect to the API using URL:
+	<ul>
+		<li>Client ID (created when registering for Foursquare developer account)</li>
+		<li>Client Secret (created when registering for Foursquare developer account)</li>
+		<li>Version of API</li>
+		<li>Coordinates (this is the coordinates we get from Google API)</li>
+		<li>Limit (this is to limit the number of search results, but we have not added a limit therefore we used the parameter 'no limit')</li>
+		<li>URL </li>
+	</ul>
+</p>
+<p> We also asked for the following parameters from the user:
+	<ul>
+		<li>Query (the category of venue they want to search for)</li>
+	</ul>
+</p>
+<p>
+	Once we get these parameters, they are taken and run through the <a href='https://api.foursquare.com/v2/venues/search'> API URL</a> to get results. </p>
+
+<h3>Get details of a Venue API:</h3>
+<p>
+	To use this API we needed to input the following parameters in our function and then connect to the API using URL:
+	<ul>
+		<li>Client ID (created when registering for Foursquare developer account)</li>
+		<li>Client Secret (created when registering for Foursquare developer account)</li>
+		<li>Version of API</li>
+		<li>URL </li>
+		<li>Venue_ID (An ID given to each venue by FourSquare)</li>
+	</ul>
+</p>
+<p>
+	Once we get these parameters, they are taken and run through the <a href='https://api.foursquare.com/v2/venues/VENUE_ID'> API URL</a> to get results. </p>
+</p>
+
+
+<h1>Functions</h1>
+<hr>
+<h2>Overview</h2>
+<p>
+	If you look in our program we have three main functions, one additional function to get the coordinatess and a main function. Each of those function can perform powerful queries.
+<h3>Main Function:</h3>
+
+<figure>
+	 <img src="images/main_function.png" alt="Main Function" style="width:500px;height:300px;">
+	 <figcaption>Fig 1: Main (main) Function</figcaption>
+</figure>
+<p>
+	The main function asks the users for two parameters. This is the first function that runs when you first run the function. It first asks you to input the area to explore. User can input specific address such as 2000 G St., Washington DC, 20052 or an area such as Adams Morgan, Washington DC. This input is stored in the variable 'selection'. Then the program will ask the user for the number of venues they want to see in the results. This selection is stored in variable 'No_limit'. These two paramenters are passed into first function, 'searching_add'.
+</p>
+<h3>Venue Search (searching_add) Function:</h3>
+<figure>
+	 <img src="images/venuesearch_function.png" alt="Venue Search Function" style="width:800px;height:1000px;">
+	 <figcaption>Fig 2: Venue Search Function</figcaption>
+</figure>
+<p>
+	This function takes the two parameters, selection and No_limit, that the user input in the main function. Then it asks the user to input the category they are searching for such as nightclubs, gyms or restaurants. We first had to take the selection parameter, which is the location spedified by the user and pass it to Google API function to get the longitute and latitude coordinates. All of the parameteres are stored in one dictionary and sent to get request URL of FourSquare. <br>
+	FourSquare sends the result of the query in json format. We get the total results and we start passing the result in a loop to print the Venue Name, Phone No. and Address of ther venues in an organized list. Each venue is automatically given a number starting from 1.<br>
+	We also get Venue ID and Venue Rating in json but we don't print them. We save he Venue ID in a dictionary with the number (automatically given to the venues, starting from 1) as its key. We then zipped the venue name and venue rating and wrote it in a csv file.<br>
+	Once the user gets the results, this function will also ask the user if they want to see a graph of the ratings. If the user says yes ('y') then we will run the plotting function, explained below. Then the function will ask the user if they want to get more details about a venue. The user will have to input a number between 1-x, x being the number of venues that they limited the function to in main function, corresponding to the venue from the result. Once the user inputs the number it runs venue_details function, explained below.<br>
+	<b>Address:</b><br>
+	The address that we got in json format was seperated by street no., city, state and zip code. In order to print it neatly for the user we had to concatenate the different parameters of an address and also write codes to emove the extra commas in between them.
+</p>
+
+<h3>Venue Details (venue_details) Funtion:</h3>
+<figure>
+	 <img src="images/venuedetails_function.png" alt="Venue Details Function" style="width:600px;height:600px;">
+	 <figcaption>Fig 3: Venue Details Function</figcaption>
+</figure>
+<p>
+	FourSquare uses Venue ID parameter to show more details about a venue. Since the Venue IDs are long and hard for users to remember. Therefore, we cannot ask the user to input that. To simplify, we created a dictionary for Venue ID with the auto generated sequence (list) number as they key. So the user will have to input the number corresponding to the venue to get more details. <br>
+	The details that will be printed are Venue Name, Phone No., Address, Rating, Pricing, URL and Hours. We ran into a problem where if one of the values for a parameter was missing then it wouldn't print any details about the venue. Therefore, we wrote an except key error function so that it will still print with the parameters it does have values for. <br>
+	Then the function will also give the option of showing the map of the venue in a browser. If the user chooses yes ('y'), then the program will create a map.html file in the same folder as the program. If you open the file, it will show a Google Map with the venue marked. (If you run this program in Windows, your default browser will auto open with Google Maps and the venue marked.) We used gmplot library to show the result in google map. 
+	</p> 
+
+<h3>Venue Rating Plot Diagram (plotting) Function:</h3>
+<figure>
+	 <img src="images/plotting_function.png" alt="Plotting Ratings" style="width:450px;height:200px;">
+	 <figcaption>Fig 4: Venue Rating Plot Diagram Function</figcaption>
+</figure>
+<p>
+	This function will plot the ratings of a function in a bar graph. The input of function is venue name and venue rating as well as selected location and selected query. We run a for loop that creates a list of the venue name and converts it to numbers that corresponds the numbers from the results. We do this because in order to plot a graph two number values are required. The title of the graph is "Rating of top {category} in {location}." The x-axis is the venues, shown in form of venue number and y-axis is the rating for each of the venues. We used matplotlib library for this function. 
+</p>
+
+<h3> Additional Function - Google Location (finding_ll)Function:</h3>
+<figure>
+	 <img src="images/google_function.png" alt="Google Location Function" style="width:430px;height:185px;">
+	 <figcaption>Fig 5: Google Latitude and Longitude (finding_ll) Function</figcaption>
+</figure>
+<p>
+	FourSquare search for a venue API takes longitude and latitude as the location parameter. Since we cannot ask users to give us latitude and longitude, we had to use Google API to take the input from user and used google API to get the latitude and longitude.
+</p>
+
+
+<h1>Example</h1>
+<p>We will take Washington DC as an example and walk through the program with the results. </p>
+<h3>Asking for the User Input:</h3>
+ <figure>
+	 <img src="images/user_input.png" alt="User Input" style="width:430px;height:100px;">
+	 <figcaption>Fig 6: User Input</figcaption>
+</figure>
+<p>
+	In this figure the program asks the users for three parameters values and the inputs are 'Washington, DC', '10', and 'bar' respectively.  
+</p>
+
+<h3>The Result:</h3>
+ <figure>
+	 <img src="images/first_result.png" alt="Results" style="width:700px;height:500px;">
+	 <figcaption>Fig 7: Reults Venue Search Function</figcaption>
+</figure>
+<p>
+	The total results that FourSquare has is 218. In this instance there are 218 bars in Washington DC area. However, the total number of venues displayed are 10, since the user had specified to 10. As mentioned in Venue Seach Function only three parameters 'Venue Name,' 'Venue Address,' and 'Venue Phone No.' are displayed in neat and orderly fashion. Each venue also has a corresponding number which will be used to run Venue Details Function and Plotting Function.
+</p>
+
+<h3>Venue Rating Bar Plot Diagram:</h3>
+ <figure>
+	 <img src="images/venue_ratings.png" alt="Ratings Plot Diagram" style="width:500px;height:400px;">
+	 <figcaption>Fig 8: Venue Rating Bar Plot Diagram</figcaption>
+</figure>
+<p>
+	This figure shows the bar graph that we get from the plotting funtion. 
+</p>
+
+<h3>More details on a Venue:</h3>
+ <figure>
+	 <img src="images/details.png" alt="Details on a Venue" style="width:500px;height:125px;">
+	 <figcaption>Fig 9: More Details on a Venue</figcaption>
+</figure>
+<p>
+	Here we have asked the user to input the number of the venue they want to get more details about. As mentioned in the Venue Details Function the user will have to input the number corresponding to the venue. In this instance, the user wanted more information about Madhatter which from the results (Fig 6) is number 2. So the user will input '2' and get more information Venue Name, Phone No., Address, Rating, Pricing, URL and Hours.
+</p>
+
+<h3>Google Map of the Venue:</h3>
+ <figure>
+	 <img src="images/venue_map.png" alt="Madhatter on a map" style="width:500px;height:500">
+	 <figcaption>Fig 10: Map of the Venue, MAdhatter</figcaption>
+</figure>
+<p>
+	Once the user decides on the venue to get more details of, they also have the option to see the location of the venue in Google maps. The map will auto open in the default browser if you are in a windows computer. In Mac or Linux, it will create a map.html file in the same folder as the program. 
+</p>
+
+<h1>Data Analysis</h1>
+
+<p>
+	We collected ratings for 100 bars in 5 big cities and 5 mid size cities in America to compare how bars are rated in America. We gathered the data by running our program and including the three parameters city name, 100 venues and bar catergory. The program spits out one csv per query, so we compiled all the csv in one excel sheet, 'Top Bar Comparison.' Our assumption was that the bars in big cities should rate higher than the bars in mid size cities because big cities have more competition and the top 100 bars in general should do better, gaining better ratings from customers.
+</p>
+<h3>Finding:</h3>
+ <figure>
+	 <img src="images/rating_chart.png" alt="Top 100 bar Rating" style="width:550px;height:400px;">
+	 <figcaption>Fig 11: Average rating of top 100 bar in American cities</figcaption>
+</figure>
+<p>
+	
+	From the Figure above we can see that there is not much of a difference in average rating between the big cities and mid size cities. However, the lowest average for big city is 7.83 for Chicago, which is still higher than the highest for mid size city, which is 7.82 for Coulumbus, Ohio. This validated our hypothesis, but we had assumed there to be a bigger difference. The small difference could be beacuse more people tend rate the bars in big cities and people have more options and variety so they could give good bars a little lower rating, bringing the average down. Small cities do not have as much option so a few good bars will be rated very high, bringing the average up.
+</p>
+
+<figure>
+	 <img src="images/bar_comparison.png" alt="Venue Ratings" style="width:650px;height:200px;">
+	 <figcaption>Fig 12 : Statistics on top 100 bars in American cities</figcaption>
+</figure>
+<p>
+	To further prove our assumption, we looked into the standard deviation of the average ratings of the bars. In the above chart, we can see that the standard deviation for mid size cities in America are more than the big cities, which tells us that the variety of bars in big cities are better on average than varities of bars in mid size cities. It validates our assumption that small cities have few highly rated bars and few poorly rated bars while big cities have on average highly rated bars.
+
+
+<br>
+<br>
+<br>
+<div class='footer'>This webpage is built as a reference for the George Washington University MSIST 6214 Advanced Programming for Business class project by Amir Sodeifi and Krisha Shrestha in Fall 2017.</div>
+
+
+
+</body>
+</html>

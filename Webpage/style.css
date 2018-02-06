@@ -1,0 +1,60 @@
+body {
+   font-size: 1.1em;
+}
+
+h1 { color: #315fe0;
+   text-indent: 20px;
+   font-family: 'Avenir', sans-serif; }
+
+h2 { text-indent: 25px;
+   color: #2451ca;
+   font-family: 'Avenir', sans-serif; }
+
+h3 { text-indent: 35px;
+   color: #0080ff;
+   font-family: 'Avenir', sans-serif; }
+
+p { margin-left: 35px;
+   font-family: 'Avenir', sans-serif; }
+
+article {
+   background-color: #898989;
+   margin: 5px 100px;
+   
+}
+
+figure {    
+   margin-left: 35px;
+   font-family: 'Avenir', sans-serif;
+   font-style: italic;
+   font-size: 16px;
+   color: #989898;
+}
+
+ul {
+   margin-left: 50px;
+   font-family: 'Avenir', sans-serif;
+}
+
+ol{
+   margin-left: 50px;
+   font-family: 'Avenir', sans-serif;
+}
+
+.footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  color: #575454;
+}
+
+
+
+
+
+
+
