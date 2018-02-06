@@ -6,8 +6,8 @@ import gmplot
 import webbrowser
 
 #my foursquare client id and client secret
-my_client_id='VG454LSU3QC4VTUVSVF4NZAEP3R3CGAAALOMQZBDJXHVI2RP'
-my_client_secret='5QXKJIBJM5EP2MESAX3U54HBCU20UMTPXNLDYXWOC3DTQ3LJ'
+my_client_id='...'
+my_client_secret='...'
 
 #searching the venue function
 def searching_add(storage,No_limit):
