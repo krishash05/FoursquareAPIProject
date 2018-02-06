@@ -1,4 +1,4 @@
-# FoursquareAPIProject
+# Foursquare API Project
 This is a class project for Advanced Business Application by Amir Sodefi and myself (Krisha Shrestha).
 This project utilizes FourSquare and Google Maps API to give venue recommendation to users.
 This project was done entirely using Python.
